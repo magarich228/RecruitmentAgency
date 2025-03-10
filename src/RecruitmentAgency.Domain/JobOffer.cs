@@ -1,0 +1,21 @@
+﻿namespace RecruitmentAgency.Domain;
+
+public class JobOffer
+{
+    public required Guid Id { get; set; }
+    public required Guid VacancyId { get; set; }
+    public required Guid EmployeeId { get; set; }
+    public required Guid? JobApplicationId { get; set; }
+    public string? Message { get; set; }
+    public required OfferVerdict Verdict { get; set; } // Запрет оформления приглашения работодателем работника без его отклика со статусом "отказ"
+    
+    public Vacancy? Vacancy { get; set; }
+    public Employee? Employee { get; set; }
+    public JobApplication? JobApplication { get; set; }
+}
+
+public enum OfferVerdict : int
+{
+    Invitation = 0,
+    Rejection = 1
+}
