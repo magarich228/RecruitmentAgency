@@ -16,6 +16,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAgency.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAgency.Api", "src\RecruitmentAgency.Api\RecruitmentAgency.Api.csproj", "{2319F140-E076-499B-9AB3-4F87568CB090}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{83194DCF-717A-4E39-8F80-F7DF981B15B9}"
+	ProjectSection(SolutionItems) = preProject
+		docs\DomainClasses.png = docs\DomainClasses.png
+		docs\RecruitmentAgencyPublicSchema.drawio = docs\RecruitmentAgencyPublicSchema.drawio
+		docs\АнализПредметнойОбласти.docx = docs\АнализПредметнойОбласти.docx
+		docs\Deploy.drawio = docs\Deploy.drawio
+		docs\Deploy.drawio.png = docs\Deploy.drawio.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{C0A1B108-23A1-4DD2-9E10-F066750F67D2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

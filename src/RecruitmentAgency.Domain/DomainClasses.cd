@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="RecruitmentAgency.Domain.Activity">
+    <Position X="12.5" Y="9.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Employers" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Admin">
+    <Position X="18.25" Y="1.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.User">
+    <Position X="21.25" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Employee">
+    <Position X="17.25" Y="11.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Qualifications" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Employer">
+    <Position X="17" Y="5.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAgAAAAIAAAAAQAAIAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Employer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Vacancies" />
+      <Property Name="Activities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.JobApplication">
+    <Position X="1.75" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAgAAAAACAAAAAAACAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>JobApplication.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employee" />
+      <Property Name="Vacancy" />
+      <Property Name="JobOffer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.JobOffer">
+    <Position X="3.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAACAAACAAAAAAACAAAAAAAAAAAJgAAAQA=</HashCode>
+      <FileName>JobOffer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Verdict" />
+      <Property Name="Employee" />
+      <Property Name="JobApplication" />
+      <Property Name="Vacancy" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Profession">
+    <Position X="9.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Profession.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AvailableQualifications" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Qualification">
+    <Position X="7.25" Y="5.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAAAAAAAQACAAAAAAAAAAgAAABAAA=</HashCode>
+      <FileName>Qualification.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Employees" />
+      <Property Name="Vacancies" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RecruitmentAgency.Domain.Vacancy">
+    <Position X="12.5" Y="0.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAGAAAIAAggAEgAAAgAAAAAAAAAAAABAAAAAgAAAAA=</HashCode>
+      <FileName>Vacancy.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Employer" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="JobApplications" />
+      <Property Name="JobOffers" />
+      <Property Name="Qualifications" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="RecruitmentAgency.Domain.OfferVerdict">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>JobOffer.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="8.25" />
+</ClassDiagram>
