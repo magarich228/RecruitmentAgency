@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Recruitment.Application\Recruitment.Application.csproj" />
+      <ProjectReference Include="..\RecruitmentAgency.Domain\RecruitmentAgency.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.14" />
     </ItemGroup>
 
 </Project>

@@ -7,7 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\RecruitmentAgency.Domain\RecruitmentAgency.Domain.csproj" />
+      <ProjectReference Include="..\..\RecruitmentAgency.Application\RecruitmentAgency.Application.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
     </ItemGroup>
 
 </Project>
