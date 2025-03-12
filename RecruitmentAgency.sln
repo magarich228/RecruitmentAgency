@@ -23,6 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{83194DCF-7
 		docs\АнализПредметнойОбласти.docx = docs\АнализПредметнойОбласти.docx
 		docs\Deploy.drawio = docs\Deploy.drawio
 		docs\Deploy.drawio.png = docs\Deploy.drawio.png
+		docs\Components.drawio = docs\Components.drawio
+		docs\Components.drawio.png = docs\Components.drawio.png
+		docs\Statechart.drawio = docs\Statechart.drawio
+		docs\UseCases.drawio = docs\UseCases.drawio
+		docs\UseCases.drawio.png = docs\UseCases.drawio.png
+		docs\VacancyApplicationStatechart.drawio.png = docs\VacancyApplicationStatechart.drawio.png
+		docs\useCases.xlsx = docs\useCases.xlsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{C0A1B108-23A1-4DD2-9E10-F066750F67D2}"
