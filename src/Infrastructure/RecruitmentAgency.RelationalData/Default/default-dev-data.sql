@@ -158,3 +158,168 @@ SELECT
     a."EmployeeId",
     a."Id"
 FROM applications a;
+
+-- 1. Расширение базовых таблиц (Activities, Professions, Qualifications)
+INSERT INTO "Activities" ("Id", "Name") VALUES
+                                            (gen_random_uuid(), 'Здравоохранение'),
+                                            (gen_random_uuid(), 'Строительство'),
+                                            (gen_random_uuid(), 'Розничная торговля'),
+                                            (gen_random_uuid(), 'Туризм'),
+                                            (gen_random_uuid(), 'Юриспруденция');
+
+INSERT INTO "Professions" ("Id", "Name") VALUES
+                                             (gen_random_uuid(), 'Врач'),
+                                             (gen_random_uuid(), 'Инженер'),
+                                             (gen_random_uuid(), 'Продавец'),
+                                             (gen_random_uuid(), 'Гид'),
+                                             (gen_random_uuid(), 'Юрист');
+
+INSERT INTO "Qualifications" ("Id", "Name", "ProfessionId")
+SELECT
+    gen_random_uuid(),
+    qual_data."Name",
+    p."Id"
+FROM
+    (VALUES
+         ('Хирургия', 'Врач'),
+         ('Терапия', 'Врач'),
+         ('Проектирование', 'Инженер'),
+         ('Монтаж', 'Инженер'),
+         ('Мерчендайзинг', 'Продавец'),
+         ('CRM', 'Продавец'),
+         ('Экскурсии', 'Гид'),
+         ('Корабельное право', 'Юрист')
+    ) AS qual_data("Name", "ProfessionName")
+        JOIN "Professions" p ON p."Name" = qual_data."ProfessionName";
+
+-- 2. Дополнительные работодатели (10+ компаний)
+INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
+                                                              ('emplr4', '+79040001122', 'hash_emplr4'),
+                                                              ('emplr5', '+79043334455', 'hash_emplr5'),
+                                                              ('emplr6', '+79046667788', 'hash_emplr6'),
+                                                              ('emplr7', '+79049990011', 'hash_emplr7'),
+                                                              ('emplr8', '+79052223344', 'hash_emplr8');
+
+INSERT INTO "Employer" ("Id", "Name", "MainAddress", "Description") VALUES
+                                                                        ('emplr4', 'Клиника Здоровье+', 'Екатеринбург, ул. Мира 10', 'Медицинский центр'),
+                                                                        ('emplr5', 'СтройГарант', 'Новосибирск, ул. Строителей 5', 'Строительная компания'),
+                                                                        ('emplr6', 'ТоргСервис', 'Казань, ул. Торговая 20', 'Розничная сеть'),
+                                                                        ('emplr7', 'ТурМир', 'Сочи, ул. Курортная 3', 'Турагентство'),
+                                                                        ('emplr8', 'ЮрКонсалт', 'Москва, ул. Правовая 7', 'Юридическая фирма');
+
+-- 3. Связь новых работодателей с направлениями деятельности
+INSERT INTO "ActivityEmployer" ("ActivitiesId", "EmployersId")
+SELECT
+    a."Id",
+    e."Id"
+FROM
+    "Employer" e
+        CROSS JOIN
+    (SELECT * FROM "Activities" WHERE "Name" IN ('Здравоохранение', 'Строительство', 'Розничная торговля', 'Туризм', 'Юриспруденция')) a
+WHERE
+    (e."Name" = 'Клиника Здоровье+' AND a."Name" = 'Здравоохранение') OR
+    (e."Name" = 'СтройГарант' AND a."Name" = 'Строительство') OR
+    (e."Name" = 'ТоргСервис' AND a."Name" = 'Розничная торговля') OR
+    (e."Name" = 'ТурМир' AND a."Name" = 'Туризм') OR
+    (e."Name" = 'ЮрКонсалт' AND a."Name" = 'Юриспруденция');
+
+-- 4. Дополнительные вакансии (15+)
+INSERT INTO "Vacancies" ("Id", "Title", "Description", "MinSalary", "MaxSalary", "Commission", "EmployerId")
+SELECT
+    gen_random_uuid(),
+    vac_data."Title",
+    vac_data."Description",
+    vac_data."MinSalary",
+    vac_data."MaxSalary",
+    vac_data."Commission",
+    e."Id"
+FROM
+    (VALUES
+         ('Хирург', 'Стационарная работа', 150000, 250000, 20000, 'Клиника Здоровье+'),
+         ('Инженер-проектировщик', 'Проекты жилых комплексов', 100000, 180000, 15000, 'СтройГарант'),
+         ('Продавец-консультант', 'Работа в ТЦ', 40000, 60000, 5000, 'ТоргСервис'),
+         ('Тургид', 'Экскурсии по Сочи', 50000, 80000, 7000, 'ТурМир'),
+         ('Юрист по корпоративному праву', 'Сопровождение сделок', 120000, 200000, 18000, 'ЮрКонсалт'),
+         ('Frontend-разработчик', 'Разработка на React', 100000, 180000, 12000, 'ООО ТехноСофт'),
+         ('Маркетолог-аналитик', 'Анализ рынка', 80000, 130000, 10000, 'Агентство МаркетПро'),
+         ('Бухгалтер по МСФО', 'Международная отчетность', 90000, 140000, 11000, 'ООО ТехноСофт'),
+         ('Логист по ВЭД', 'Таможенное оформление', 85000, 120000, 9000, 'ООО ЛогикТранс'),
+         ('Преподаватель английского', 'Подготовка к IELTS', 70000, 100000, 8000, 'Агентство МаркетПро')
+    ) AS vac_data("Title", "Description", "MinSalary", "MaxSalary", "Commission", "EmployerName")
+        JOIN "Employer" e ON e."Name" = vac_data."EmployerName";
+
+-- 5. Дополнительные работники (10+)
+INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
+                                                              ('emp6', '+79993334455', 'hash_emp6'),
+                                                              ('emp7', '+79994445566', 'hash_emp7'),
+                                                              ('emp8', '+79995556677', 'hash_emp8'),
+                                                              ('emp9', '+79996667788', 'hash_emp9'),
+                                                              ('emp10', '+79997778899', 'hash_emp10');
+
+INSERT INTO "Employee" ("Id", "FullName", "Resume") VALUES
+                                                        ('emp6', 'Смирнова Ольга Петровна', 'Опыт в хирургии 7 лет'),
+                                                        ('emp7', 'Кузнецов Андрей Игоревич', 'Инженер-проектировщик с сертификатами'),
+                                                        ('emp8', 'Васильева Екатерина Сергеевна', 'Консультант премиум-брендов'),
+                                                        ('emp9', 'Морозов Дмитрий Алексеевич', 'Гид со знанием 3 языков'),
+                                                        ('emp10', 'Федорова Анна Викторовна', 'Корпоративный юрист');
+
+-- 6. Связи для новых данных
+-- Квалификации для новых вакансий
+INSERT INTO "QualificationVacancy" ("QualificationsId", "VacanciesId")
+SELECT
+    q."Id",
+    v."Id"
+FROM
+    "Vacancies" v
+        JOIN
+    "Qualifications" q ON
+        (v."Title" = 'Хирург' AND q."Name" = 'Хирургия') OR
+        (v."Title" = 'Инженер-проектировщик' AND q."Name" = 'Проектирование') OR
+        (v."Title" = 'Продавец-консультант' AND q."Name" = 'CRM') OR
+        (v."Title" = 'Тургид' AND q."Name" = 'Экскурсии') OR
+        (v."Title" = 'Юрист по корпоративному праву' AND q."Name" = 'Корабельное право');
+
+-- Квалификации для новых работников
+INSERT INTO "EmployeeQualification" ("EmployeesId", "QualificationsId")
+SELECT
+    e."Id",
+    q."Id"
+FROM
+    "Employee" e
+        JOIN
+    "Qualifications" q ON
+        (e."FullName" = 'Смирнова Ольга Петровна' AND q."Name" = 'Хирургия') OR
+        (e."FullName" = 'Кузнецов Андрей Игоревич' AND q."Name" = 'Проектирование') OR
+        (e."FullName" = 'Васильева Екатерина Сергеевна' AND q."Name" = 'CRM') OR
+        (e."FullName" = 'Морозов Дмитрий Алексеевич' AND q."Name" = 'Экскурсии') OR
+        (e."FullName" = 'Федорова Анна Викторовна' AND q."Name" = 'Корабельное право');
+
+-- 7. Дополнительные отклики и офферы (10+)
+WITH applications AS (
+    INSERT INTO "JobApplications" ("Id", "EmployeeId", "VacancyId")
+        SELECT
+            gen_random_uuid(),
+            e."Id",
+            v."Id"
+        FROM
+            "Employee" e
+                JOIN
+            "Vacancies" v ON
+                (e."FullName" = 'Смирнова Ольга Петровна' AND v."Title" = 'Хирург') OR
+                (e."FullName" = 'Кузнецов Андрей Игоревич' AND v."Title" = 'Инженер-проектировщик') OR
+                (e."FullName" = 'Васильева Екатерина Сергеевна' AND v."Title" = 'Продавец-консультант') OR
+                (e."FullName" = 'Морозов Дмитрий Алексеевич' AND v."Title" = 'Тургид') OR
+                (e."FullName" = 'Федорова Анна Викторовна' AND v."Title" = 'Юрист по корпоративному праву')
+        RETURNING "Id", "VacancyId", "EmployeeId"
+)
+INSERT INTO "JobOffers" ("Id", "Verdict", "VacancyId", "EmployeeId", "JobApplicationId")
+SELECT
+    gen_random_uuid(),
+    CASE
+        WHEN RANDOM() < 0.5 THEN 'Приглашение'
+        ELSE 'Отказ'
+        END,
+    a."VacancyId",
+    a."EmployeeId",
+    a."Id"
+FROM applications a;
