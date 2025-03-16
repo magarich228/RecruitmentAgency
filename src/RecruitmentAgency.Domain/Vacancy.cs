@@ -8,6 +8,7 @@ public class Vacancy
     public decimal? MinSalary { get; set; }
     public decimal? MaxSalary { get; set; }
     public required decimal Commission { get; set; }
+    public required DateTime CreationDate { get; set; }
     
     public ICollection<Qualification>? Qualifications { get; set; }
     public Employer? Employer { get; set; }

@@ -12,6 +12,15 @@ public static class RecruitmentAgencyExtensions
     {
         services.AddInfrastructure(configuration);
         
+        services.AddScoped<IVacancyService, VacancyService>();
+        services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<IEmployerService, EmployerService>();
+        services.AddScoped<IJobApplicationService, JobApplicationService>();
+        services.AddScoped<IQualificationService, QualificationService>();
+        services.AddScoped<IReportService, ReportService>();
+        services.AddScoped<IActivityService, ActivityService>();
+        services.AddScoped<IProfessionService, ProfessionService>();
+        
         return services;
     }
 }
