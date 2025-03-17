@@ -585,7 +585,7 @@ namespace RecruitmentAgency.HttpClient
         public string Role { get; set; }
 
         [Newtonsoft.Json.JsonProperty("expiration", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset Expiration { get; set; }
+        public System.DateTime Expiration { get; set; }
 
     }
 
@@ -630,7 +630,7 @@ namespace RecruitmentAgency.HttpClient
         public System.Collections.Generic.ICollection<string> Qualifications { get; set; }
 
         [Newtonsoft.Json.JsonProperty("createdAt", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset CreatedAt { get; set; }
+        public System.DateTime CreatedAt { get; set; }
 
     }
 

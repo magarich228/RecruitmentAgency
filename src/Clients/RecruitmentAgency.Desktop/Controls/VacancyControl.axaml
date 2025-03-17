@@ -1,0 +1,43 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             MinWidth="500"
+             x:Class="RecruitmentAgency.Desktop.Controls.VacancyControl"
+             x:DataType="viewModels:VacancyViewModel">
+    <Grid>
+        <Grid.RowDefinitions>50,50,*</Grid.RowDefinitions>
+
+        <Button Content="Назад"
+                Click="CancelVacancy_OnClick"
+                Margin="30,0,0,0" />
+
+        <Label Grid.Row="1"
+               Content="{Binding Vacancy.Title, FallbackValue=Название Вакансии}"
+               HorizontalAlignment="Center" />
+
+        <ScrollViewer Grid.Row="2"
+                      HorizontalAlignment="Center"
+                      Width="500">
+            <StackPanel>
+                
+                <Label Content="Вилка ЗП:"/>
+                
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal">
+                    <TextBlock Text="{Binding Vacancy.MinSalary, FallbackValue=Не задана}"
+                               VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding Vacancy.MaxSalary, StringFormat='-{0}', FallbackValue=Не задана}"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+
+                <TextPresenter Text="{Binding Vacancy.Description}"/>
+                
+                <TextPresenter Text="{Binding Vacancy.CreatedAt, StringFormat='Опубликована: {0}'}" />
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

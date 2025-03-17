@@ -27,21 +27,40 @@
             <Grid.ColumnDefinitions>200,*</Grid.ColumnDefinitions>
 
             <StackPanel>
-
+                <StackPanel>
+                    <Label>Минимальная Зп</Label>
+                    <TextBox Text="{Binding MinSalary}" />
+                </StackPanel>
+                <StackPanel>
+                    <Label>Максимальная Зп</Label>
+                    <TextBox Text="{Binding MaxSalary}" />
+                </StackPanel>
             </StackPanel>
 
             <ScrollViewer Grid.Column="1">
                 <ListBox ItemsSource="{Binding Path=Vacancies}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                
-                                <TextBlock Text="{Binding Title}"/>
-                                
-                                <TextBlock Text="{Binding MinSalary}"/>
-                                <TextBlock Text="{Binding MaxSalary, StringFormat='-{0}'}"/>
-                                
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>*,*,*</Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}"
+                                           FontSize="18"
+                                           Margin="0,0,80,0"
+                                           VerticalAlignment="Center"
+                                           MinWidth="300"/>
+
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="{Binding MinSalary}"
+                                               VerticalAlignment="Center" />
+                                    <TextBlock Text="{Binding MaxSalary, StringFormat='-{0}'}"
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+
+                                <Button Content="Перейти"
+                                        Click="OpenVacancy_OnClick"
+                                        Grid.Column="2" />
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
