@@ -40,6 +40,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{FCADE686-2062-4D7F-8F2A-05457B63E22C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAgency.Desktop", "src\Clients\RecruitmentAgency.Desktop\RecruitmentAgency.Desktop.csproj", "{13D56386-41AB-4AC5-9410-B9C24B362AA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecruitmentAgency.HttpClient", "src\Clients\RecruitmentAgency.HttpClient\RecruitmentAgency.HttpClient.csproj", "{6A1E8F91-F6DB-45BA-A736-8748531FD254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +59,9 @@ Global
 		{31586572-D7FB-49D3-928C-B5E42950300F} = {215FC88E-BD3D-41AF-85FC-D3FEA402E7AA}
 		{20121E6B-269B-4775-A7A3-B345B1B48A9E} = {90A0CA7F-69BA-41B4-8C01-0FD7AB6CEF24}
 		{2319F140-E076-499B-9AB3-4F87568CB090} = {215FC88E-BD3D-41AF-85FC-D3FEA402E7AA}
+		{FCADE686-2062-4D7F-8F2A-05457B63E22C} = {215FC88E-BD3D-41AF-85FC-D3FEA402E7AA}
+		{13D56386-41AB-4AC5-9410-B9C24B362AA7} = {FCADE686-2062-4D7F-8F2A-05457B63E22C}
+		{6A1E8F91-F6DB-45BA-A736-8748531FD254} = {FCADE686-2062-4D7F-8F2A-05457B63E22C}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7B993099-6678-40CA-9CF2-A4545EFB912F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -79,5 +88,13 @@ Global
 		{2319F140-E076-499B-9AB3-4F87568CB090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2319F140-E076-499B-9AB3-4F87568CB090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2319F140-E076-499B-9AB3-4F87568CB090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D56386-41AB-4AC5-9410-B9C24B362AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D56386-41AB-4AC5-9410-B9C24B362AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D56386-41AB-4AC5-9410-B9C24B362AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D56386-41AB-4AC5-9410-B9C24B362AA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A1E8F91-F6DB-45BA-A736-8748531FD254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A1E8F91-F6DB-45BA-A736-8748531FD254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A1E8F91-F6DB-45BA-A736-8748531FD254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A1E8F91-F6DB-45BA-A736-8748531FD254}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

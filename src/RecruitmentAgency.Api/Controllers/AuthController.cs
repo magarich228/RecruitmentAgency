@@ -24,21 +24,21 @@ public class AuthController(IUserService userService) : ControllerBase
     }
     
     [HttpPost("adminTest")]
-    [Authorize("AdminOnly")]
+    [Authorize(Roles = "Admin")]
     public Task<IActionResult> AdminTest()
     {
         return Task.FromResult<IActionResult>(Ok());
     }
     
     [HttpPost("employerTest")]
-    [Authorize("Employer")]
+    [Authorize(Roles = "Employer")]
     public Task<IActionResult> EmployerTest()
     {
         return Task.FromResult<IActionResult>(Ok());
     }
     
     [HttpPost("employeeTest")]
-    [Authorize("Employee")]
+    [Authorize(Roles = "Employee")]
     public Task<IActionResult> EmployeeTest()
     {
         return Task.FromResult<IActionResult>(Ok());

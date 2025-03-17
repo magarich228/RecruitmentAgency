@@ -23,10 +23,10 @@ public class UserService(
                        .Include(u => ((Employee) u).Qualifications)
                        .Include(u => ((Employer) u).Activities)
                        .FirstOrDefaultAsync(u => u.PhoneNumber == request.PhoneNumber)
-                   ?? throw new RecruitmentAgencyApplicationException("Invalid credentials");
+                   ?? throw new RecruitmentAgencyApiException("Invalid credentials");
 
         if (user.PasswordHash != request.Password) // TODO: hash
-            throw new RecruitmentAgencyApplicationException("Invalid password");
+            throw new RecruitmentAgencyApiException("Invalid password");
 
         return GenerateAuthResponse(user);
     }

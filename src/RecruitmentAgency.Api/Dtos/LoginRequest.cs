@@ -4,6 +4,6 @@ namespace RecruitmentAgency.Api.Dtos;
 
 public class LoginRequest
 {
-    [Required] public string PhoneNumber { get; set; }
-    [Required] public string Password { get; set; }
+    [Required] public required string PhoneNumber { get; set; }
+    [Required] public required string Password { get; set; }
 }

@@ -34,7 +34,7 @@ builder.Services.AddAuthentication(options =>
             ValidAudience = builder.Configuration["JwtSettings:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"] ??
-                                       throw new InvalidOperationException("Secret not found.")))
+                                       throw new RecruitmentAgencyApiException("Secret not found.")))
         };
     });
 
