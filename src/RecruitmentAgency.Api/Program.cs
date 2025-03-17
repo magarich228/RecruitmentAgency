@@ -62,6 +62,9 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 
+app.UseAuthentication();
+app.UseAuthorization();
+
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<RecruitmentDbContext>();

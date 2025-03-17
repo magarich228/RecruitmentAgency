@@ -24,7 +24,7 @@ public class AuthController(IUserService userService) : ControllerBase
     }
     
     [HttpPost("adminTest")]
-    [Authorize("Admin")]
+    [Authorize("AdminOnly")]
     public Task<IActionResult> AdminTest()
     {
         return Task.FromResult<IActionResult>(Ok());

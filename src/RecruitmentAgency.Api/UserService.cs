@@ -34,8 +34,14 @@ public class UserService(
     private AuthResponse GenerateAuthResponse(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_jwtSettings.Secret);
+        var key = Encoding.UTF8.GetBytes(_jwtSettings.Secret);
 
+        if (key.Length < 32)
+        {
+            throw new ArgumentException(
+                $"JWT key must be at least 256 bits (32 bytes). Current: {key.Length * 8} bits");
+        }
+        
         var claims = new List<Claim>
         {
             new(ClaimTypes.NameIdentifier, user.Id),
@@ -60,8 +66,7 @@ public class UserService(
             Issuer = _jwtSettings.Issuer,
             Audience = _jwtSettings.Audience
         };
-
-        // TODO: fix.
+        
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
         return new AuthResponse
