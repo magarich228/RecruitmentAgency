@@ -14,6 +14,7 @@ public partial class LoginControl : UserControl
     private readonly MainWindowViewModel _mainVm;
     
     private readonly VacanciesControl _vacanciesControl;
+    private readonly MiniProfileControl _miniProfileControl;
     
     public LoginControl()
     {
@@ -26,6 +27,7 @@ public partial class LoginControl : UserControl
         _mainVm = serviceProvider.GetRequiredService<MainWindowViewModel>();
 
         _vacanciesControl = serviceProvider.GetRequiredService<VacanciesControl>();
+        _miniProfileControl = serviceProvider.GetRequiredService<MiniProfileControl>();
         
         DataContext = _vm;
     }
@@ -53,6 +55,7 @@ public partial class LoginControl : UserControl
             return;
         }
 
+        _mainVm.WindowContent = _vacanciesControl;
         _mainVm.AuthControl!.IsVisible = true;
     }
 

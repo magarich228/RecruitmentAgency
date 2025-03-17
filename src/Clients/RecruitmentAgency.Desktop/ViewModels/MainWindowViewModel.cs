@@ -42,10 +42,12 @@ public partial class MainWindowViewModel : ViewModelBase
         }
         else
         {
-            AuthControl = _serviceProvider.GetRequiredService<MiniProfileControl>();
-            // WindowContent = 
+            var miniProfileControl = _serviceProvider.GetRequiredService<MiniProfileControl>();
+            var miniProfileVm = _serviceProvider.GetRequiredService<MiniProfileViewModel>();
+
+            miniProfileVm.Refresh();
+            
+            AuthControl = miniProfileControl;
         }
-        
-        
     }
 }

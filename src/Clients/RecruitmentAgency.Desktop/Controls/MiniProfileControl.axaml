@@ -11,6 +11,9 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <viewModels:MiniProfileViewModel />
     </Design.DataContext>
-    
-    <TextBlock Text="{Binding PhoneNumber}"/>
+    <StackPanel Orientation="Horizontal">
+        <Button Content="Выйти"
+                Click="Exit_OnClick"/>
+        <TextBlock Text="{Binding PhoneNumber, FallbackValue=Аутентифицирован}" />
+    </StackPanel>
 </UserControl>

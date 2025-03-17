@@ -1,4 +1,5 @@
 ﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using RecruitmentAgency.Desktop.Services;
 
@@ -11,8 +12,15 @@ public partial class MiniProfileViewModel : ViewModelBase
     public MiniProfileViewModel(IServiceProvider serviceProvider)
     {
         _userContainer = serviceProvider.GetRequiredService<UserContainer>();
+
+        Refresh();
     }
 
-    public string PhoneNumber => _userContainer.PhoneNumber ?? 
-                                 throw new ApplicationException("Phone number is null");
+    public void Refresh()
+    {
+        PhoneNumber = _userContainer.PhoneNumber;
+    }
+
+    [ObservableProperty]
+    private string? _phoneNumber;
 }

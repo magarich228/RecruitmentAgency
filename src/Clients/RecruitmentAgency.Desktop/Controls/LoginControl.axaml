@@ -41,7 +41,8 @@
                 <Button Content="Отмена"
                         Click="Cancel_OnClick"/>
                 <Button Content="Регистрация"
-                        Click="Registration_OnClick" />
+                        Click="Registration_OnClick"
+                        IsEnabled="False"/>
                 <Button Content="Войти"
                         Click="Login_OnClick" />
             </StackPanel>

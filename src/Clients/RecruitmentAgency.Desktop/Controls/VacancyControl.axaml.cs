@@ -34,4 +34,9 @@ public partial class VacancyControl : UserControl
         
         mainVm.WindowContent = _prevUserControl;
     }
+
+    private void ApplyVacancy_OnClick(object? sender, RoutedEventArgs e)
+    {
+        
+    }
 }

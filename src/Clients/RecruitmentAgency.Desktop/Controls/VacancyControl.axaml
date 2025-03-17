@@ -25,8 +25,7 @@
                 
                 <Label Content="Вилка ЗП:"/>
                 
-                <StackPanel Grid.Column="1"
-                            Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding Vacancy.MinSalary, FallbackValue=Не задана}"
                                VerticalAlignment="Center" />
                     <TextBlock Text="{Binding Vacancy.MaxSalary, StringFormat='-{0}', FallbackValue=Не задана}"
@@ -36,6 +35,10 @@
                 <TextPresenter Text="{Binding Vacancy.Description}"/>
                 
                 <TextPresenter Text="{Binding Vacancy.CreatedAt, StringFormat='Опубликована: {0}'}" />
+                
+                <Button Content="Откликнуться"
+                        Click="ApplyVacancy_OnClick"
+                        IsVisible="{Binding IsEmployee}"/>
             </StackPanel>
         </ScrollViewer>
 
