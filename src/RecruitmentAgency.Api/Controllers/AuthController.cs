@@ -10,7 +10,7 @@ namespace RecruitmentAgency.Api.Controllers;
 public class AuthController(IUserService userService) : ControllerBase
 {
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginRequest request)
+    public async Task<ActionResult<AuthResponse>> Login([FromBody] LoginRequest request)
     {
         try
         {

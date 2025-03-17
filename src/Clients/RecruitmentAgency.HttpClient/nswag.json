@@ -1,0 +1,17 @@
+{
+  "runtime": "Net80",
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "namespace": "RecruitmentAgency.HttpClient",
+      "dateTimeType": "System.DateTime",
+      "generateClientClasses": true,
+      "generateClientInterfaces": false,
+      "generateDtoTypes": true,
+      "useBaseUrl": true,
+      "injectHttpClient": true,
+      "requiredPropertiesMustBeDefined": true
+    }
+  },
+  "input": "http://localhost:5000/swagger/v1/swagger.json",
+  "output": "Client.cs"
+}

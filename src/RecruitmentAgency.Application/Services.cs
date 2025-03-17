@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 using RecruitmentAgency.Domain;
 
 namespace RecruitmentAgency.Application;
@@ -86,7 +87,7 @@ public class VacancyService(IRecruitmentAgencyContext context) : BaseService(con
 
     public async Task<IEnumerable<VacancyDto>> SearchVacanciesAsync(VacancySearchFilter filter)
     {
-        var query = VacanciesWithIncludes.AsQueryable();
+        var query = VacanciesWithIncludes.AsNoTracking();
 
         if (filter.MinSalary.HasValue)
             query = query.Where(v => v.MinSalary >= filter.MinSalary);
@@ -94,14 +95,17 @@ public class VacancyService(IRecruitmentAgencyContext context) : BaseService(con
         if (filter.MaxSalary.HasValue)
             query = query.Where(v => v.MaxSalary <= filter.MaxSalary);
 
-        if (!string.IsNullOrEmpty(filter.SearchTerm))
-            query = query.Where(v => EF.Functions.Like(v.Title, $"%{filter.SearchTerm}%")
-                                     || EF.Functions.Like(v.Description, $"%{filter.SearchTerm}%"));
+        if (!string.IsNullOrWhiteSpace(filter.SearchTerm))
+            query = query.Where(v => EF.Functions.Like(v.Title.ToLower(), $"%{filter.SearchTerm.ToLower()}%")
+                                     || EF.Functions.Like(v.Description.ToLower(), $"%{filter.SearchTerm.ToLower()}%")
+                                     || v.Qualifications!.Any(q => q.Name.ToLower() == filter.SearchTerm.ToLower()));
 
-        return await query
+        var vacancies = await query
             .OrderByDescending(v => v.CreationDate)
-            .Select(v => MapToDto(v))
             .ToListAsync();
+        
+        return (vacancies)
+            .Select(MapToDto);
     }
 
     public async Task AddQualificationToVacancyAsync(Guid vacancyId, Guid qualificationId)
