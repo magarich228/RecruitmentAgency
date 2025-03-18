@@ -35,6 +35,10 @@
                     <Label>Максимальная Зп</Label>
                     <TextBox Text="{Binding MaxSalary}" />
                 </StackPanel>
+                <StackPanel IsVisible="{Binding IsEmployer}">
+                    <Label>Только мои</Label>
+                    <CheckBox IsChecked="{Binding IsOnlyEmployerVacancies}"/>
+                </StackPanel>
             </StackPanel>
 
             <ScrollViewer Grid.Column="1">

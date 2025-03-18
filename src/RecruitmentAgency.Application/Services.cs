@@ -133,8 +133,9 @@ public class VacancyService(IRecruitmentAgencyContext context) : BaseService(con
         vacancy.MinSalary,
         vacancy.MaxSalary,
         vacancy.Commission,
+        vacancy.Employer!.Id,
         vacancy.Employer.Name,
-        vacancy.Qualifications.Select(q => q.Name),
+        vacancy.Qualifications?.Select(q => q.Name) ?? Array.Empty<string>(),
         vacancy.CreationDate
     );
 }
@@ -652,6 +653,7 @@ public record VacancyDto(
     decimal? MinSalary,
     decimal? MaxSalary,
     decimal Commission,
+    string EmployerId,
     string EmployerName,
     IEnumerable<string> Qualifications,
     DateTime CreatedAt);

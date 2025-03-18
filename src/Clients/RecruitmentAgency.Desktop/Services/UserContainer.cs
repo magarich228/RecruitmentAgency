@@ -14,6 +14,8 @@ public class UserContainer(IServiceProvider serviceProvider)
 
     public string? ConfirmPassword { get; set; }
 
+    public string? Id { get; set; }
+    
     // Employeer
 
     public string? Name { get; set; }
@@ -50,8 +52,19 @@ public class UserContainer(IServiceProvider serviceProvider)
         });
 
         Client.Token = response.Token;
+        this.Auth = response;
+        
+        var userInfo = await client.MeAsync();
 
-        return (this.Auth = response);
+        Id = userInfo.Id;
+        PhoneNumber = userInfo.PhoneNumber;
+        FullName = userInfo.FullName;
+        Resume = userInfo.Resume;
+        Name = userInfo.Name;
+        MainAddress = userInfo.MainAddress;
+        Description = userInfo.Description;
+        
+        return this.Auth;
     }
 
     public async Task<AuthResponse> RegisterAsync(string role)
