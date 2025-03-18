@@ -8,23 +8,23 @@ using RecruitmentAgency.Desktop.ViewModels;
 
 namespace RecruitmentAgency.Desktop.Controls;
 
-public partial class LoginControl : UserControl
+public partial class RegisterControl : UserControl
 {
-    private readonly LoginViewModel _vm;
+    private readonly RegisterViewModel _vm;
     private readonly MainWindowViewModel _mainVm;
     
     private readonly VacanciesControl _vacanciesControl;
     private readonly MiniProfileControl _miniProfileControl;
     private readonly IServiceProvider _serviceProvider;
     
-    public LoginControl()
+    public RegisterControl()
     {
         InitializeComponent();
     }
-
-    public LoginControl(IServiceProvider serviceProvider) : this()
+    
+    public RegisterControl(IServiceProvider serviceProvider) : this()
     {
-        _vm = serviceProvider.GetRequiredService<LoginViewModel>();
+        _vm = serviceProvider.GetRequiredService<RegisterViewModel>();
         _mainVm = serviceProvider.GetRequiredService<MainWindowViewModel>();
 
         _vacanciesControl = serviceProvider.GetRequiredService<VacanciesControl>();
@@ -33,22 +33,22 @@ public partial class LoginControl : UserControl
         
         DataContext = _vm;
     }
-
-    private void Registration_OnClick(object? sender, RoutedEventArgs e)
+    
+    private void Login_OnClick(object? sender, RoutedEventArgs e)
     {
-        _mainVm.WindowContent = _serviceProvider.GetRequiredService<RegisterControl>();
+        _mainVm.WindowContent = _serviceProvider.GetRequiredService<LoginControl>();
     }
     
-    private async void Login_OnClick(object? sender, RoutedEventArgs e)
+    private async void Registration_OnClick(object? sender, RoutedEventArgs e)
     {
         try
         {
-            await _vm.AuthorizeAsync();
+            await _vm.RegisterAsync();
         }
         catch (Exception ex)
         {
             await MessageBoxManager.GetMessageBoxStandard(
-                    "Ошибка при входе",
+                    "Ошибка при регистрации",
                     ex.Message,
                     ButtonEnum.Ok,
                     Icon.Error)

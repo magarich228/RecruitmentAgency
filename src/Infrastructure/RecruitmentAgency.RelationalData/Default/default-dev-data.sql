@@ -36,18 +36,18 @@ FROM
 -- Администратор
 WITH admin_user AS (
 INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash")
-VALUES ('admin1', '+79991112233', 'hash_admin')
+VALUES ('admin1', '+79991112233', 'qwerty')
     RETURNING "Id"
     )
 INSERT INTO "Admin" ("Id") SELECT "Id" FROM admin_user;
 
 -- Работники
 INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
-                                                              ('emp1', '+79994445566', 'hash_emp1'),
-                                                              ('emp2', '+79997778899', 'hash_emp2'),
-                                                              ('emp3', '+79991234567', 'hash_emp3'),
-                                                              ('emp4', '+79995556677', 'hash_emp4'),
-                                                              ('emp5', '+79996667788', 'hash_emp5');
+                                                              ('emp1', '+79994445566', 'qwerty'),
+                                                              ('emp2', '+79997778899', 'qwerty'),
+                                                              ('emp3', '+79991234567', 'qwerty'),
+                                                              ('emp4', '+79995556677', 'qwerty'),
+                                                              ('emp5', '+79996667788', 'qwerty');
 
 INSERT INTO "Employee" ("Id", "FullName", "Resume") VALUES
                                                         ('emp1', 'Иванов Иван Иванович', 'Опыт работы: 5 лет в backend-разработке'),
@@ -58,9 +58,9 @@ INSERT INTO "Employee" ("Id", "FullName", "Resume") VALUES
 
 -- Работодатели
 INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
-                                                              ('emplr1', '+79031112233', 'hash_emplr1'),
-                                                              ('emplr2', '+79034445566', 'hash_emplr2'),
-                                                              ('emplr3', '+79037778899', 'hash_emplr3');
+                                                              ('emplr1', '+79031112233', 'qwerty'),
+                                                              ('emplr2', '+79034445566', 'qwerty'),
+                                                              ('emplr3', '+79037778899', 'qwerty');
 
 INSERT INTO "Employer" ("Id", "Name", "MainAddress", "Description") VALUES
                                                                         ('emplr1', 'ООО ТехноСофт', 'Москва, ул. Ленина 1', 'IT-компания'),
@@ -194,11 +194,11 @@ FROM
 
 -- 2. Дополнительные работодатели (10+ компаний)
 INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
-                                                              ('emplr4', '+79040001122', 'hash_emplr4'),
-                                                              ('emplr5', '+79043334455', 'hash_emplr5'),
-                                                              ('emplr6', '+79046667788', 'hash_emplr6'),
-                                                              ('emplr7', '+79049990011', 'hash_emplr7'),
-                                                              ('emplr8', '+79052223344', 'hash_emplr8');
+                                                              ('emplr4', '+79040001122', 'qwerty'),
+                                                              ('emplr5', '+79043334455', 'qwerty'),
+                                                              ('emplr6', '+79046667788', 'qwerty'),
+                                                              ('emplr7', '+79049990011', 'qwerty'),
+                                                              ('emplr8', '+79052223344', 'qwerty');
 
 INSERT INTO "Employer" ("Id", "Name", "MainAddress", "Description") VALUES
                                                                         ('emplr4', 'Клиника Здоровье+', 'Екатеринбург, ул. Мира 10', 'Медицинский центр'),
@@ -250,11 +250,11 @@ FROM
 
 -- 5. Дополнительные работники (10+)
 INSERT INTO "Users" ("Id", "PhoneNumber", "PasswordHash") VALUES
-                                                              ('emp6', '+79993334455', 'hash_emp6'),
-                                                              ('emp7', '+79994445566', 'hash_emp7'),
-                                                              ('emp8', '+79995556677', 'hash_emp8'),
-                                                              ('emp9', '+79996667788', 'hash_emp9'),
-                                                              ('emp10', '+79997778899', 'hash_emp10');
+                                                              ('emp6', '+79993334455', 'qwerty'),
+                                                              ('emp7', '+79994445566', 'qwerty'),
+                                                              ('emp8', '+79995556677', 'qwerty'),
+                                                              ('emp9', '+79996667788', 'qwerty'),
+                                                              ('emp10', '+79997778899', 'qwerty');
 
 INSERT INTO "Employee" ("Id", "FullName", "Resume") VALUES
                                                         ('emp6', 'Смирнова Ольга Петровна', 'Опыт в хирургии 7 лет'),

@@ -76,6 +76,8 @@ public partial class App : Application
         services
             .AddSingleton<LoginViewModel>()
             .AddSingleton<LoginControl>()
+            .AddSingleton<RegisterViewModel>()
+            .AddSingleton<RegisterControl>()
             .AddSingleton<AuthControl>()
             .AddSingleton<MiniProfileViewModel>()
             .AddSingleton<MiniProfileControl>()

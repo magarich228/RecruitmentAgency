@@ -1,0 +1,90 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecruitmentAgency.Desktop.Controls.RegisterControl"
+             x:DataType="viewModels:RegisterViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <viewModels:RegisterViewModel />
+    </Design.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>*,500,*</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>*,500,*</Grid.RowDefinitions>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Vertical"
+                    Spacing="15">
+
+            <Label FontSize="20">Вход</Label>
+
+            <StackPanel>
+                <Label>Номер телефона</Label>
+                <MaskedTextBox Text="{Binding PhoneNumber}"
+                               Mask="+70000000000" />
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Пароль</Label>
+                <TextBox Text="{Binding Password}"
+                         PasswordChar="*" />
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Подтверждение</Label>
+                <TextBox Text="{Binding ConfirmPassword}"
+                         PasswordChar="*" />
+            </StackPanel>
+            
+            <StackPanel>
+                <Label>Роль</Label>
+                <ComboBox ItemsSource="{Binding Roles}"
+                          SelectedItem="{Binding SelectedRole}"/>
+            </StackPanel>
+            
+            <!-- Employee -->
+            <StackPanel IsVisible="{Binding IsEmployee}">
+                <Label>ФИО</Label>
+                <TextBox Text="{Binding FullName}"/>
+            </StackPanel>
+            
+            <StackPanel IsVisible="{Binding IsEmployee}">
+                <Label>Резюме</Label>
+                <TextBox Text="{Binding Resume}"/>
+            </StackPanel>
+            
+            <!-- Employer -->
+            <StackPanel IsVisible="{Binding IsEmployer}">
+                <Label>Наименование организации</Label>
+                <TextBox Text="{Binding Name}"/>
+            </StackPanel>
+            
+            <StackPanel IsVisible="{Binding IsEmployer}">
+                <Label>Описание</Label>
+                <TextBox Text="{Binding Description}"/>
+            </StackPanel>
+            
+            <StackPanel IsVisible="{Binding IsEmployer}">
+                <Label>Головной адрес</Label>
+                <TextBox Text="{Binding MainAddress}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Spacing="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <Button Content="Отмена"
+                        Click="Cancel_OnClick"/>
+                <Button Content="На страницу входа"
+                        Click="Login_OnClick"/>
+                <Button Content="Зарегистрироваться"
+                        Click="Registration_OnClick" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>
