@@ -43,4 +43,12 @@ public partial class MainWindow : Window
         
         _vm.WindowContent = _serviceProvider.GetRequiredService<JobApplicationsControl>();
     }
+
+    private void GoToVacanciesApplications_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (_vm.AuthControl != null)
+            _vm.AuthControl.IsVisible = true;
+        
+        _vm.WindowContent = _serviceProvider.GetRequiredService<EmployerVacanciesApplicationsControl>();
+    }
 }

@@ -34,6 +34,10 @@
                                 Click="GoToApplications_OnClick"
                                 IsVisible="{Binding IsApplicationsVisible}"/>
                         
+                        <Button Content="Отклики работников"
+                                Click="GoToVacanciesApplications_OnClick"
+                                IsVisible="{Binding IsVacanciesApplicationsVisible}"/>
+                        
                     </StackPanel>
                     
                     <UserControl Content="{Binding AuthControl}"

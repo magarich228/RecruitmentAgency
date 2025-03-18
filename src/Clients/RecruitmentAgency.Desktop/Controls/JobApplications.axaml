@@ -7,8 +7,6 @@
              x:Class="RecruitmentAgency.Desktop.Controls.JobApplicationsControl"
              x:DataType="viewModels:JobApplicationsViewModel">
     <StackPanel>
-        <!-- <Button Content="Нзаад" -->
-        <!--         Click="CancelApplications_OnClick"/> -->
         <ScrollViewer>
             <ListBox ItemsSource="{Binding Applications}">
                 <ListBox.ItemTemplate>

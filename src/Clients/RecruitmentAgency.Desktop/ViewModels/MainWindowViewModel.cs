@@ -33,6 +33,9 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] 
     private bool _isApplicationsVisible;
     
+    [ObservableProperty]
+    private bool _isVacanciesApplicationsVisible;
+    
     private void UserContainerOnAuthChanged(object? sender, AuthResponse? e)
     {
         if (AuthControl is not null)
@@ -44,6 +47,7 @@ public partial class MainWindowViewModel : ViewModelBase
             WindowContent = _serviceProvider.GetRequiredService<VacanciesControl>();
 
             IsApplicationsVisible = false;
+            IsVacanciesApplicationsVisible = false;
         }
         else
         {
@@ -58,6 +62,13 @@ public partial class MainWindowViewModel : ViewModelBase
             {
                 case "Employee":
                     IsApplicationsVisible = true;
+                    break;
+                
+                case "Employer":
+                    IsVacanciesApplicationsVisible = true;
+                    break;
+                
+                case "Admin":
                     break;
                 
                 default:

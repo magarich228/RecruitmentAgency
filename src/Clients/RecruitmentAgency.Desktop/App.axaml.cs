@@ -81,8 +81,10 @@ public partial class App : Application
             .AddSingleton<MiniProfileControl>()
             .AddSingleton<VacanciesViewModel>()
             .AddSingleton<VacanciesControl>()
-            .AddSingleton<JobApplicationsViewModel>()
-            .AddSingleton<JobApplicationsControl>();
+            .AddTransient<JobApplicationsViewModel>()
+            .AddTransient<JobApplicationsControl>()
+            .AddTransient<EmployerVacanciesApplicationsViewModel>()
+            .AddTransient<EmployerVacanciesApplicationsControl>();
         
         return services.BuildServiceProvider();
     }

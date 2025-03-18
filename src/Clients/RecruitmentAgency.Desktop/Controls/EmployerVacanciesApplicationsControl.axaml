@@ -1,0 +1,42 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecruitmentAgency.Desktop.Controls.EmployerVacanciesApplicationsControl"
+             x:DataType="viewModels:EmployerVacanciesApplicationsViewModel">
+    <StackPanel>
+        <ScrollViewer>
+            <ListBox ItemsSource="{Binding VacancyApplications}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>*,*,*,*,*,*</Grid.ColumnDefinitions>
+                            
+                            <StackPanel>
+                                
+                                <TextBlock Text="{Binding Application.ApplicationDate}"/>
+                                
+                                <TextBlock Text="{Binding  Application.VacancyTitle}"/>
+                                
+                                <TextBlock Text="{Binding Application.EmployeeName}"/>
+                                
+                                <TextBlock Text="{Binding Status}"/>
+                                
+                                <Button Content="Пригласить"
+                                        Click="Offer_OnClick"
+                                        IsVisible="{Binding OfferNotExists}"/>
+                                
+                                <Button Content="Отклонить"
+                                        Click="RejectOffer_OnClick"
+                                        IsVisible="{Binding OfferNotExists}"/>
+                                
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>
