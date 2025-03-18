@@ -35,6 +35,8 @@ public class UserContainer(IServiceProvider serviceProvider)
             PhoneNumber = this.PhoneNumber,
             Password = this.PasswordHash
         });
+
+        Client.Token = response.Token;
         
         return (this.Auth = response);
     }

@@ -8,4 +8,15 @@ public partial class Client
     {
         
     }
+
+    public static string? Token { get; set; } 
+    
+    partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request,
+        string url)
+    {
+        if (Token != null)
+        {
+            request.Headers.Add("Authorization", "Bearer " + Token);
+        }
+    }
 }

@@ -364,14 +364,21 @@ public class JobApplicationService : BaseService, IJobApplicationService
                            .FirstOrDefaultAsync(e => e.Id == employeeId)
                        ?? throw new KeyNotFoundException("Employee not found");
 
-        var missingQualifications = vacancy.Qualifications
-            .Where(q => !employee.Qualifications.Contains(q))
-            .ToList();
+        // var missingQualifications = vacancy.Qualifications
+        //     .Where(q => !employee.Qualifications.Contains(q))
+        //     .ToList();
+        //
+        // if (missingQualifications.Any())
+        // {
+        //     throw new InvalidOperationException(
+        //         $"Missing required qualifications: {string.Join(", ", missingQualifications.Select(q => q.Name))}");
+        // }
 
-        if (missingQualifications.Any())
+        if (await _context.JobApplications
+            .Include(a => a.Employee)
+            .AnyAsync(a => a.Employee!.Id == employeeId && a.VacancyId == vacancyId))
         {
-            throw new InvalidOperationException(
-                $"Missing required qualifications: {string.Join(", ", missingQualifications.Select(q => q.Name))}");
+            throw new InvalidOperationException("Отклик на данную вакансию уже создан.");
         }
 
         var application = new JobApplication
