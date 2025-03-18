@@ -1,0 +1,33 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecruitmentAgency.Desktop.Controls.JobApplicationsControl"
+             x:DataType="viewModels:JobApplicationsViewModel">
+    <StackPanel>
+        <!-- <Button Content="Нзаад" -->
+        <!--         Click="CancelApplications_OnClick"/> -->
+        <ScrollViewer>
+            <ListBox ItemsSource="{Binding Applications}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>*,*,*</Grid.ColumnDefinitions>
+                            
+                            <TextBlock Text="{Binding Application.VacancyTitle}"
+                                       Grid.Column="0"/>
+                            
+                            <TextBlock Text="{Binding Application.ApplicationDate}"
+                                       Grid.Column="1"/>
+                            
+                            <TextBlock Text="{Binding Status}"
+                                       Grid.Column="2"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

@@ -29,6 +29,9 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [ObservableProperty]
     private UserControl? _windowContent;
+
+    [ObservableProperty] 
+    private bool _isApplicationsVisible;
     
     private void UserContainerOnAuthChanged(object? sender, AuthResponse? e)
     {
@@ -39,6 +42,8 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             AuthControl = _serviceProvider.GetRequiredService<AuthControl>();
             WindowContent = _serviceProvider.GetRequiredService<VacanciesControl>();
+
+            IsApplicationsVisible = false;
         }
         else
         {
@@ -48,6 +53,16 @@ public partial class MainWindowViewModel : ViewModelBase
             miniProfileVm.Refresh();
             
             AuthControl = miniProfileControl;
+
+            switch (e.Role)
+            {
+                case "Employee":
+                    IsApplicationsVisible = true;
+                    break;
+                
+                default:
+                    throw new ApplicationException("Unknown role");
+            }
         }
     }
 }

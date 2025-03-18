@@ -80,7 +80,9 @@ public partial class App : Application
             .AddSingleton<MiniProfileViewModel>()
             .AddSingleton<MiniProfileControl>()
             .AddSingleton<VacanciesViewModel>()
-            .AddSingleton<VacanciesControl>();
+            .AddSingleton<VacanciesControl>()
+            .AddSingleton<JobApplicationsViewModel>()
+            .AddSingleton<JobApplicationsControl>();
         
         return services.BuildServiceProvider();
     }

@@ -21,9 +21,26 @@
         <Border BorderThickness="0,0,0,2"
                 Background="Gray">
             <StackPanel>
-                <UserControl Content="{Binding AuthControl}"
-                             HorizontalAlignment="Right"
-                             Margin="15" />
+                <Grid>
+                    <Grid.ColumnDefinitions>*,Auto</Grid.ColumnDefinitions>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                Spacing="10">
+                        
+                        <Button Content="Вакансии"
+                                Click="GoToVacancies_OnClick"/>
+                        
+                        <Button Content="Отклики"
+                                Click="GoToApplications_OnClick"
+                                IsVisible="{Binding IsApplicationsVisible}"/>
+                        
+                    </StackPanel>
+                    
+                    <UserControl Content="{Binding AuthControl}"
+                                 HorizontalAlignment="Right"
+                                 Margin="15"
+                                 Grid.Column="1"/>
+                </Grid>
             </StackPanel>
         </Border>
 

@@ -151,8 +151,8 @@ INSERT INTO "JobOffers" ("Id", "Verdict", "VacancyId", "EmployeeId", "JobApplica
 SELECT
     gen_random_uuid(),
     CASE
-        WHEN RANDOM() < 0.5 THEN 'Приглашение'
-        ELSE 'Отказ'
+        WHEN RANDOM() < 0.5 THEN 'Invitation'
+        ELSE 'Rejection'
         END,
     a."VacancyId",
     a."EmployeeId",
