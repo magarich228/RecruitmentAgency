@@ -16,12 +16,13 @@
 
         <Label Grid.Row="1"
                Content="{Binding Vacancy.Title, FallbackValue=Название Вакансии}"
-               HorizontalAlignment="Center" />
+               HorizontalAlignment="Center"
+               FontSize="20"/>
 
         <ScrollViewer Grid.Row="2"
                       HorizontalAlignment="Center"
                       Width="500">
-            <StackPanel>
+            <StackPanel Spacing="10">
                 
                 <Label Content="Вилка ЗП:"/>
                 
@@ -33,6 +34,9 @@
                 </StackPanel>
 
                 <TextPresenter Text="{Binding Vacancy.Description}"/>
+                
+                <TextBlock Text="{Binding Vacancy.EmployerName, StringFormat='Компания: {0}'}"
+                           FontWeight="Bold"/>
                 
                 <TextPresenter Text="{Binding Vacancy.CreatedAt, StringFormat='Опубликована: {0}'}" />
                 

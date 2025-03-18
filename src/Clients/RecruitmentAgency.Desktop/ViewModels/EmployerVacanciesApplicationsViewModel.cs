@@ -19,7 +19,34 @@ public partial class EmployerVacanciesApplicationsViewModel : ViewModelBase
     public EmployerVacanciesApplicationsViewModel(IServiceProvider serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        using var scope = serviceProvider.CreateScope();
+        
+        Refresh();
+    }
+    
+    public ObservableCollection<EmployerJobApplicationModel> VacancyApplications { get; set; }
+
+    public void CreateOffer(Guid applicationId, string employeeId, OfferVerdict verdict)
+    {
+        using var scope = _serviceProvider.CreateScope();
+        var client = scope.ServiceProvider.GetRequiredService<Client>();
+
+        var body = new CreateOfferDto()
+        {
+            ApplicationId = applicationId,
+            EmployeeId = employeeId,
+            Message = verdict == OfferVerdict._0 ? "Мы с вами свяжемся!" : "Извините, но мы не можем вас пригласить",
+            Verdict = verdict
+        };
+        
+        client.OfferAsync(body)
+            .Wait();
+        
+        Refresh();
+    }
+
+    private void Refresh()
+    {
+        using var scope = _serviceProvider.CreateScope();
         var client = scope.ServiceProvider.GetRequiredService<Client>();
 
         var applications = client.ListForEmployerAsync()
@@ -30,15 +57,5 @@ public partial class EmployerVacanciesApplicationsViewModel : ViewModelBase
             });
         
         VacancyApplications = new ObservableCollection<EmployerJobApplicationModel>(applications);
-    }
-    
-    public ObservableCollection<EmployerJobApplicationModel> VacancyApplications { get; set; }
-
-    public void CreateOffer()
-    {
-        using var scope = _serviceProvider.CreateScope();
-        var client = scope.ServiceProvider.GetRequiredService<Client>();
-        
-        
     }
 }

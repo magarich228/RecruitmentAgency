@@ -417,6 +417,14 @@ public class JobApplicationService : BaseService, IJobApplicationService
         var employee = await _context.Employees.FindAsync(employeeId)
                        ?? throw new KeyNotFoundException("Employee not found");
 
+        if (await _context.JobOffers
+                .Include(o => o.Employee)
+                .AnyAsync(o => o.VacancyId == vacancyId &&
+                               o.Employee!.Id == employeeId))
+        {
+            throw new InvalidOperationException("Отклик уже создан!");
+        }
+        
         var offer = new JobOffer
         {
             Vacancy = vacancy,
@@ -713,6 +721,7 @@ public record ProfessionDto(
 public record JobApplicationDto(
     Guid Id,
     string EmployeeName,
+    string EmployerName,
     string VacancyTitle,
     DateTime ApplicationDate,
     ApplicationStatus Status);

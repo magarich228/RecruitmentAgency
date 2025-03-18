@@ -12,16 +12,22 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
-                            <Grid.ColumnDefinitions>*,*,*</Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>*,*,*,*,*</Grid.ColumnDefinitions>
                             
                             <TextBlock Text="{Binding Application.VacancyTitle}"
                                        Grid.Column="0"/>
                             
-                            <TextBlock Text="{Binding Application.ApplicationDate}"
+                            <TextBlock Text="{Binding Application.EmployeeName}"
                                        Grid.Column="1"/>
                             
-                            <TextBlock Text="{Binding Status}"
+                            <TextBlock Text="{Binding Application.EmployerName}"
                                        Grid.Column="2"/>
+                            
+                            <TextBlock Text="{Binding Application.ApplicationDate}"
+                                       Grid.Column="3"/>
+                            
+                            <TextBlock Text="{Binding Status}"
+                                       Grid.Column="4"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
