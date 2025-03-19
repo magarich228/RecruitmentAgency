@@ -35,6 +35,9 @@ public partial class MainWindowViewModel : ViewModelBase
     
     [ObservableProperty]
     private bool _isVacanciesApplicationsVisible;
+
+    [ObservableProperty] 
+    private bool _isReportVisible;
     
     private void UserContainerOnAuthChanged(object? sender, AuthResponse? e)
     {
@@ -48,6 +51,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
             IsApplicationsVisible = false;
             IsVacanciesApplicationsVisible = false;
+            IsReportVisible = false;
         }
         else
         {
@@ -69,6 +73,7 @@ public partial class MainWindowViewModel : ViewModelBase
                     break;
                 
                 case "Admin":
+                    IsReportVisible = true;
                     break;
                 
                 default:

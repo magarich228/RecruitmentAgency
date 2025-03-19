@@ -38,6 +38,10 @@
                                 Click="GoToVacanciesApplications_OnClick"
                                 IsVisible="{Binding IsVacanciesApplicationsVisible}"/>
                         
+                        <Button Content="Отчет"
+                                Click="GoToReport_OnClick"
+                                IsVisible="{Binding IsReportVisible}"/>
+                        
                     </StackPanel>
                     
                     <UserControl Content="{Binding AuthControl}"

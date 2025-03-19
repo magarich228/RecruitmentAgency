@@ -86,7 +86,9 @@ public partial class App : Application
             .AddTransient<JobApplicationsViewModel>()
             .AddTransient<JobApplicationsControl>()
             .AddTransient<EmployerVacanciesApplicationsViewModel>()
-            .AddTransient<EmployerVacanciesApplicationsControl>();
+            .AddTransient<EmployerVacanciesApplicationsControl>()
+            .AddSingleton<ReportViewModel>()
+            .AddTransient<ReportControl>();
         
         return services.BuildServiceProvider();
     }

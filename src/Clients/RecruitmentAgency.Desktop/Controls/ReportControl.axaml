@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecruitmentAgency.Desktop.Controls.ReportControl"
+             x:DataType="viewModels:ReportViewModel">
+    <StackPanel>
+        <Label FontSize="24"
+               FontWeight="Bold">
+            Отчет о прибыли с коммиссионных за определенный срок
+        </Label>
+        
+        <StackPanel Orientation="Horizontal"
+                    Spacing="20">
+            <StackPanel Orientation="Horizontal">
+                <Label>От</Label>
+                <CalendarDatePicker SelectedDate="{Binding From}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>До</Label>
+                <CalendarDatePicker SelectedDate="{Binding To}"/>
+            </StackPanel>
+        </StackPanel>
+        
+        
+        <Label FontSize="18">
+            Итоговая прибыль с коммиссионных:
+        </Label>
+        
+        <TextBlock Text="{Binding CommissionIncome}"/>
+        
+    </StackPanel>
+</UserControl>

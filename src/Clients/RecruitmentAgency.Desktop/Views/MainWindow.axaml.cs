@@ -51,4 +51,12 @@ public partial class MainWindow : Window
         
         _vm.WindowContent = _serviceProvider.GetRequiredService<EmployerVacanciesApplicationsControl>();
     }
+
+    private void GoToReport_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if (_vm.AuthControl != null)
+            _vm.AuthControl.IsVisible = true;
+
+        _vm.WindowContent = _serviceProvider.GetRequiredService<ReportControl>();
+    }
 }
