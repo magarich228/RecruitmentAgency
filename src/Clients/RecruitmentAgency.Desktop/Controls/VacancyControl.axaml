@@ -27,9 +27,9 @@
                 <Label Content="Вилка ЗП:"/>
                 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Vacancy.MinSalary, FallbackValue=Не задана}"
+                    <TextBlock Text="{Binding Vacancy.MinSalary}"
                                VerticalAlignment="Center" />
-                    <TextBlock Text="{Binding Vacancy.MaxSalary, StringFormat='-{0}', FallbackValue=Не задана}"
+                    <TextBlock Text="{Binding Vacancy.MaxSalary, StringFormat='-{0}'}"
                                VerticalAlignment="Center" />
                 </StackPanel>
 

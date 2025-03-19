@@ -1,0 +1,50 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:RecruitmentAgency.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="RecruitmentAgency.Desktop.Controls.NewVacancyControl"
+             x:DataType="viewModels:NewVacancyViewModel">
+    <Grid>
+        <Grid.RowDefinitions>50,50,*</Grid.RowDefinitions>
+
+        <TextBox Grid.Row="1"
+                 Text="{Binding Vacancy.Title}"
+                 Watermark="Название вакансии"
+                 HorizontalAlignment="Center"
+                 FontSize="20" />
+
+        <ScrollViewer Grid.Row="2"
+                      HorizontalAlignment="Center"
+                      Width="500">
+            <StackPanel Spacing="10">
+
+                <Label Content="Вилка ЗП:" />
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="{Binding Vacancy.MinSalary}"
+                             VerticalAlignment="Center"
+                             Watermark="Минимальная з.п." />
+                    <TextBox Text="{Binding Vacancy.MaxSalary}"
+                             VerticalAlignment="Center"
+                             Watermark="Максимальная з.п." />
+                </StackPanel>
+
+                <TextBox Text="{Binding Vacancy.Description}"
+                         Watermark="Описание вакансии"
+                         MinLines="3"/>
+                
+                <StackPanel Orientation="Horizontal"
+                            Spacing="10">
+                    <Button Content="Назад"
+                            Click="CancelVacancy_OnClick"
+                            Margin="30,0,0,0" />
+                    <Button Content="Опубликовать"
+                            Click="CreateVacancy_OnClick"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

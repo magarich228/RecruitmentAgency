@@ -41,4 +41,10 @@ public partial class VacanciesControl : UserControl
         var mainVm = _serviceProvider.GetRequiredService<MainWindowViewModel>();
         mainVm.WindowContent = new VacancyControl(_serviceProvider, this, vacancy);
     }
+
+    private void CreateVacancy_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var mainVm = _serviceProvider.GetRequiredService<MainWindowViewModel>();
+        mainVm.WindowContent = new NewVacancyControl(_serviceProvider, this);
+    }
 }

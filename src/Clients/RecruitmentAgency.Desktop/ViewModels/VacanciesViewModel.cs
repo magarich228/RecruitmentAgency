@@ -68,7 +68,7 @@ public partial class VacanciesViewModel : ViewModelBase
         base.OnPropertyChanged(e);
     }
 
-    private void SearchVacancies()
+    public void SearchVacancies()
     {
         var vacancies = _client
             .SearchAsync(MinSalary, MaxSalary, SearchText)

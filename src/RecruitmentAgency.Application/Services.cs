@@ -10,7 +10,7 @@ public class VacancyService(IRecruitmentAgencyContext context) : BaseService(con
     {
         var employer = await _context.Employers
                            .Include(e => e.Activities)
-                           .FirstOrDefaultAsync(e => e.Id == dto.EmployerId)
+                           .FirstOrDefaultAsync(e => e.Id == default!)
                        ?? throw new ArgumentException("Invalid employer");
 
         if ((employer.Activities ?? throw new InvalidOperationException()).All(a => a.Id != dto.ActivityId))
@@ -22,19 +22,19 @@ public class VacancyService(IRecruitmentAgencyContext context) : BaseService(con
             Description = dto.Description,
             MinSalary = dto.MinSalary,
             MaxSalary = dto.MaxSalary,
-            Commission = dto.Commission,
+            Commission = default,
             Employer = employer,
             Qualifications = new List<Qualification>(),
             Id = Guid.NewGuid(),
             CreationDate = DateTime.Now
         };
 
-        foreach (var qualificationId in dto.QualificationIds)
-        {
-            var qualification = await _context.Qualifications.FindAsync(qualificationId)
-                                ?? throw new ArgumentException($"Invalid qualification ID: {qualificationId}");
-            vacancy.Qualifications.Add(qualification);
-        }
+        // foreach (var qualificationId in dto.QualificationIds)
+        // {
+        //     var qualification = await _context.Qualifications.FindAsync(qualificationId)
+        //                         ?? throw new ArgumentException($"Invalid qualification ID: {qualificationId}");
+        //     vacancy.Qualifications.Add(qualification);
+        // }
 
         await _context.Vacancies.AddAsync(vacancy);
         await SaveAsync();
@@ -631,12 +631,9 @@ public class EmployeeSearchFilter
 public record VacancyCreateDto(
     string Title,
     string Description,
-    decimal? MinSalary,
-    decimal? MaxSalary,
-    decimal Commission,
-    string EmployerId,
-    Guid ActivityId,
-    List<Guid> QualificationIds);
+    decimal MinSalary,
+    decimal MaxSalary,
+    Guid ActivityId);
 
 public record VacancyUpdateDto(
     string? Title,
