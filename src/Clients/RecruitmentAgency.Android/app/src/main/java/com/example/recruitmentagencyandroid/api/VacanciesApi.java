@@ -18,6 +18,7 @@ import com.example.recruitmentagencyandroid.ApiClient;
 import com.example.recruitmentagencyandroid.ApiException;
 import com.example.recruitmentagencyandroid.ApiResponse;
 import com.example.recruitmentagencyandroid.Configuration;
+import com.example.recruitmentagencyandroid.GlobalVariables;
 import com.example.recruitmentagencyandroid.Pair;
 import com.example.recruitmentagencyandroid.ProgressRequestBody;
 import com.example.recruitmentagencyandroid.ProgressResponseBody;
@@ -129,7 +130,7 @@ public class VacanciesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { GlobalVariables.GetDefaultAuthSchema() };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -251,7 +252,7 @@ public class VacanciesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { GlobalVariables.GetDefaultAuthSchema() };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -388,7 +389,7 @@ public class VacanciesApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] {  };
+        String[] localVarAuthNames = new String[] { GlobalVariables.GetDefaultAuthSchema() };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 

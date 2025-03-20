@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -29,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        Configuration
+                .getDefaultApiClient()
+                .setBasePath(GlobalVariables.GetApiBaseUrl());
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void LoginOnClick(View view) throws ApiException {
         AuthApi api = new AuthApi();
-        api.setCustomBaseUrl(GlobalVariables.ApiBaseUrl);
 
         LoginRequest request = new LoginRequest();
 
@@ -51,44 +52,7 @@ public class MainActivity extends AppCompatActivity {
         request.setPhoneNumber(phone);
         request.setPassword(pass);
 
-        MainActivity context = this;
-
-        ApiCallback<AuthResponse> callback = new ApiCallback<AuthResponse>() {
-            @Override
-            public void onFailure(ApiException e, int statusCode, Map<String, List<String>> responseHeaders) {
-                runOnUiThread(() -> {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-
-                    builder.setTitle("Ошибка при входе");
-                    builder.setMessage(e.getMessage());
-
-                    builder.setNegativeButton("Ок", (dialog, which) -> { });
-
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                });
-
-                Log.e("Api error", e.toString());
-            }
-
-            @Override
-            public void onSuccess(AuthResponse result, int statusCode, Map<String, List<String>> responseHeaders) {
-                // TODO: set auth token
-                runOnUiThread(() -> {
-                    Toast.makeText(context, "Успешный вход", Toast.LENGTH_SHORT).show();
-                });
-            }
-
-            @Override
-            public void onUploadProgress(long bytesWritten, long contentLength, boolean done) {
-
-            }
-
-            @Override
-            public void onDownloadProgress(long bytesRead, long contentLength, boolean done) {
-
-            }
-        };
+        ApiCallback<AuthResponse> callback = AuthActivitiesShared.CreateCallback(this);
 
         api.apiAuthLoginPostAsync(request, callback);
 

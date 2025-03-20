@@ -16,6 +16,7 @@ import com.example.recruitmentagencyandroid.ServerConfiguration;
 import com.example.recruitmentagencyandroid.auth.ApiKeyAuth;
 import com.example.recruitmentagencyandroid.auth.Authentication;
 import com.example.recruitmentagencyandroid.auth.HttpBasicAuth;
+import com.example.recruitmentagencyandroid.auth.HttpBearerAuth;
 
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
@@ -140,7 +141,10 @@ public class ApiClient {
         // Set default User-Agent.
         setUserAgent("OpenAPI-Generator/1.0/java");
 
+        String schema = GlobalVariables.GetDefaultAuthSchema();
+
         authentications = new HashMap<String, Authentication>();
+        authentications.put(schema, new HttpBearerAuth(schema));
     }
 
     /**
@@ -449,7 +453,10 @@ public class ApiClient {
      * @param accessToken Access token
      */
     public void setAccessToken(String accessToken) {
-        throw new RuntimeException("No OAuth2 authentication configured!");
+        Authentication auth = getAuthentication(GlobalVariables.GetDefaultAuthSchema());
+
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) auth;
+        bearerAuth.setBearerToken(accessToken);
     }
 
     /**
