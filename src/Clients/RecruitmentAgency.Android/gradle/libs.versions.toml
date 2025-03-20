@@ -1,21 +1,40 @@
 [versions]
 agp = "8.9.0"
+commonsLang3 = "3.17.0"
+gson = "2.9.1"
+gsonFire = "1.9.0"
+jacksonDatabindNullable = "0.2.6"
+jakartaWsRsApi = "2.1.6"
+jsr305 = "3.0.2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
+jakarta-annotation = "2.1.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+okhttp = "4.12.0"
+swaggerAnnotations = "1.6.8"
 
 [libraries]
+commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commonsLang3" }
+gson-fire = { module = "io.gsonfire:gson-fire", version.ref = "gsonFire" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+jackson-databind-nullable = { module = "org.openapitools:jackson-databind-nullable", version.ref = "jacksonDatabindNullable" }
+jakarta-ws-rs-api = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "jakartaWsRsApi" }
+jsr305 = { module = "com.google.code.findbugs:jsr305", version.ref = "jsr305" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+jakarta-annotation-api = { group = "jakarta.annotation", name = "jakarta.annotation-api", version.ref = "jakarta-annotation" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+swagger-annotations = { module = "io.swagger:swagger-annotations", version.ref = "swaggerAnnotations" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
