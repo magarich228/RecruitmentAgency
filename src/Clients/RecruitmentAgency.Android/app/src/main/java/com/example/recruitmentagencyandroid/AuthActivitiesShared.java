@@ -2,6 +2,7 @@ package com.example.recruitmentagencyandroid;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -43,6 +44,9 @@ public class AuthActivitiesShared {
 
                 context.runOnUiThread(() -> {
                     Toast.makeText(context, "Успешный вход", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(context, BasicActivity.class);
+                    context.startActivity(intent);
                 });
             }
 

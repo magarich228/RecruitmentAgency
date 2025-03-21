@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{83194DCF-7
 		docs\RecruitmentAgencySequence.mmd = docs\RecruitmentAgencySequence.mmd
 		docs\RecruitmentAgencySequence.png = docs\RecruitmentAgencySequence.png
 		docs\RecruitmentAgencyPublicSchemaER.drawio.png = docs\RecruitmentAgencyPublicSchemaER.drawio.png
+		docs\UseCases.png = docs\UseCases.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{C0A1B108-23A1-4DD2-9E10-F066750F67D2}"

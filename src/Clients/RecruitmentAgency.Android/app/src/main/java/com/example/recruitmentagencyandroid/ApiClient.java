@@ -459,6 +459,14 @@ public class ApiClient {
         bearerAuth.setBearerToken(accessToken);
     }
 
+    public void removeAccessToken()
+    {
+        Authentication auth = getAuthentication(GlobalVariables.GetDefaultAuthSchema());
+
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) auth;
+        bearerAuth.setBearerToken((Supplier<String>) null);
+    }
+
     /**
      * Helper method to set credentials for AWSV4 Signature
      *
